@@ -1,4 +1,6 @@
 # --- New Receptionist Features ---
+import datetime
+
 def check_in(student_id, course_id, timestamp=None):
     """Records a student's attendance for a course."""
     if timestamp is None:
@@ -14,6 +16,7 @@ def check_in(student_id, course_id, timestamp=None):
     }
     # TODO: Append this new record to the app_data['attendance'] list.
     app_data['attendance'].append(check_in_record)
+    save_data()
     print(f"Receptionist: Student {student_id} checked into {course_id}.")
 
 def print_student_card(student_id):
