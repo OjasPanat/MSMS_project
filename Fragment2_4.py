@@ -15,18 +15,45 @@ def main():
         
         made_change = False # A flag to track if we need to save
         if choice == '1':
+            try:
+                student_id = int(input("Enter student ID: "))
+                course_id = input("Enter course name: ")
+                check_in(student_id, course_id)
+                made_change = True
+            except ValueError:
+                print("ID is invalid. Please enter a number.")
             # TODO: Get student_id and course_id from user, then call check_in().
-            made_change = True
         elif choice == '2':
-            # TODO: Get student_id, then call print_student_card().
+            try:
+                student_id = int(input("Enter student ID: "))
+                print_student_card(student_id)
+            except ValueError:
+                print("Invalid ID. Please enter a number.")
             pass # No change made, so no save needed
         elif choice == '3':
-            # TODO: Get teacher_id and new details, then call update_teacher().
-            # Example: update_teacher(1, speciality="Advanced Piano")
-            made_change = True
+            try:
+                teacher_id = int(input("Enter teacher ID to update: "))
+                name = input("Enter new name (leave blank to skip): ")
+                speciality = input("Enter new speciality (leave blank to skip): ")
+                update_fields = {}
+                if name.strip():
+                    update_fields["name"] = name
+                if speciality.strip():
+                    update_fields["speciality"] = speciality
+                if update_fields:
+                    update_teacher(teacher_id, **update_fields)
+                    made_change = True
+                else:
+                    print("No updates provided.")
+            except ValueError:
+                print("Invalid ID. Please enter a number.")
         elif choice == '4':
-            # TODO: Get student_id, then call remove_student().
-            made_change = True
+            try:
+                student_id = int(input("Enter student ID to remove: "))
+                remove_student(student_id)
+                made_change = True
+            except ValueError:
+                print("Invalid ID. Please enter a number.")
         elif choice.lower() == 'q':
             print("Saving final changes and exiting.")
             break
