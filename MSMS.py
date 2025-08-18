@@ -6,7 +6,7 @@ class Student:
     def __init__(self, student_id, name):
         self.id = student_id
         self.name = name
-        # TODO: Initialize an empty list called 'enrolled_in' to store instrument names.
+        # TODO: Initialise an empty list called 'enrolled_in' to store instrument names.
         self.enrolled_in = [] # instrument
 
 class Teacher:
@@ -132,6 +132,9 @@ def main():
     # Pre-populate some data for easy testing
     add_teacher("Dr. Keys", "Piano")
     add_teacher("Ms. Fret", "Guitar")
+    add_teacher("Mr. Bow", "Violin")
+    add_teacher("Mrs. Reed", "Flute")
+
 
     while True:
         print("\n===== Music School Front Desk =====")
